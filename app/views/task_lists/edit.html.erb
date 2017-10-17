@@ -1,0 +1,8 @@
+<h1>Edit a tasklist</h1>
+
+<%= simple_form_for @task_list do |f| %>
+  <%= f.input :name %>
+  <%= f.button :submit %>
+<% end %>
+
+<%=link_to 'Back', task_lists_path %>
