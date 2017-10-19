@@ -1,6 +1,15 @@
 
 <h1>Tasklist</h1>
 
+<h3>Filter</h3>
+<%= form_tag(task_lists_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search' %>
+<% end %>
+<%= form_tag(task_lists_path, method: :get) do %>
+  <%= submit_tag 'Show all' %>
+<% end %>
+
 <table>
   <thead>
     <tr>

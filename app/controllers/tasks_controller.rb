@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   before_action :prepare_task, only: [:edit, :completed, :show]
 
   def index
-    @tasks = @task_list.tasks.all
+    @tasks = if params[:term]
+      @task_list.tasks.where('description LIKE ?', "%#{params[:term]}%")
+    else
+      @task_list.tasks.all
+    end
   end
 
   def new
@@ -45,7 +49,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:description, :due_date, :completed)
+    params.require(:task).permit(:description, :due_date, :completed, :term)
   end
 
   def prepare_tasklist

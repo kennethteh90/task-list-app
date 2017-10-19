@@ -1,6 +1,15 @@
 
 <h1><%=@task_list.name%> Tasks</h1>
 
+<h3>Filter</h3>
+<%= form_tag(task_list_tasks_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search' %>
+<% end %>
+<%= form_tag(task_list_tasks_path, method: :get) do %>
+  <%= submit_tag 'Show all' %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -26,3 +35,4 @@
 <br>
 
 <%=link_to 'Create new task', new_task_list_task_path(@task_list) %>
+<%=link_to 'Back to Home', task_lists_path %>
