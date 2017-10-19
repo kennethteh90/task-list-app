@@ -32,7 +32,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = @task_list.find(params[:id])
+    @task = @task_list.tasks.find(params[:id])
   end
 
   def destroy
@@ -40,10 +40,16 @@ class TasksController < ApplicationController
     redirect_to task_list_tasks_path
   end
 
+  def completed
+    @task = @task_list.tasks.find(params[:id])
+    @task.toggle(:completed).save
+    redirect_to task_list_tasks_path
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:description, :due_date)
+    params.require(:task).permit(:description, :due_date, :completed)
   end
 
   def prepare_tasklist
