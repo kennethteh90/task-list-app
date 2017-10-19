@@ -5,10 +5,9 @@
 <%= form_tag(task_list_tasks_path, method: :get) do %>
   <%= text_field_tag :term, params[:term] %>
   <%= submit_tag 'Search' %>
+  <%= link_to 'Show all', task_list_tasks_path%>
 <% end %>
-<%= form_tag(task_list_tasks_path, method: :get) do %>
-  <%= submit_tag 'Show all' %>
-<% end %>
+
 
 <table>
   <thead>
