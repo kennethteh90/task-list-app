@@ -15,6 +15,7 @@
       <tr>
         <td><%= task.description %></td>
         <td><%= task.due_date %></td>
+        <td><%= link_to "#{task.completed ? 'Completed' : 'In-Progress'}", completed_task_list_task_path(@task_list, task), method: :put %></td>
         <td><%= link_to 'Edit', edit_task_list_task_path(@task_list, task) %></td>
         <td><%= link_to 'Destroy', task_list_task_path(@task_list, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
