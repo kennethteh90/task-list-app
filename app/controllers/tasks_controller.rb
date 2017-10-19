@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
 
   before_action :prepare_tasklist
+  before_action :prepare_task, only: [:edit, :completed, :show]
 
   def index
     @tasks = @task_list.tasks.all
@@ -19,9 +20,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit
-    @task = @task_list.tasks.find(params[:id])
-  end
+  def edit; end
 
   def update
     if @task = @task_list.tasks.update(task_params)
@@ -31,9 +30,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def show
-    @task = @task_list.tasks.find(params[:id])
-  end
+  def show; end
 
   def destroy
     @task_list.tasks.destroy(params[:id])
@@ -41,7 +38,6 @@ class TasksController < ApplicationController
   end
 
   def completed
-    @task = @task_list.tasks.find(params[:id])
     @task.toggle(:completed).save
     redirect_to task_list_tasks_path
   end
@@ -54,6 +50,10 @@ class TasksController < ApplicationController
 
   def prepare_tasklist
     @task_list = TaskList.find(params[:task_list_id])
+  end
+
+  def prepare_task
+    @task = @task_list.tasks.find(params[:id])
   end
 
 end
