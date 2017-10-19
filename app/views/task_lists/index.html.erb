@@ -13,7 +13,7 @@
     <% @task_lists.each do |tasklist| %>
       <tr>
         <td><%= tasklist.name %></td>
-        <td><%= link_to 'Show', task_list_path(tasklist.id) %></td>
+        <td><%= link_to 'Show', task_list_tasks_path(tasklist.id) %></td>
         <td><%= link_to 'Edit', edit_task_list_path(tasklist) %></td>
         <td><%= link_to 'Destroy', task_list_path(tasklist.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
