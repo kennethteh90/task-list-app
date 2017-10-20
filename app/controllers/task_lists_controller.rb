@@ -1,7 +1,11 @@
 class TaskListsController < ApplicationController
 	def index
-		@task_lists = TaskList.all
-	end
+    @task_lists = if params[:term]
+      TaskList.where('name LIKE ?', "%#{params[:term]}%")
+    else
+      TaskList.all
+    end
+  end
 
 	def show
 		@task_list = TaskList.find(params[:id])
@@ -35,6 +39,6 @@ class TaskListsController < ApplicationController
 	private
 
 	def task_list_params
-		params.require(:task_list).permit(:name)
+		params.require(:task_list).permit(:name, :term)
 	end
 end
