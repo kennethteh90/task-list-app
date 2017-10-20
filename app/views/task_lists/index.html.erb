@@ -1,33 +1,27 @@
-
-<h1>Tasklist</h1>
-
+<h1 align="center">My Current Tasklist(s)</h1>
+<br>
 <h3>Filter</h3>
 <%= form_tag(task_lists_path, method: :get) do %>
   <%= text_field_tag :term, params[:term] %>
   <%= submit_tag 'Search' %>
   <%= link_to 'Show all', task_lists_path%>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @task_lists.each do |tasklist| %>
-      <tr>
-        <td><%= tasklist.name %></td>
-        <td><%= link_to 'Show', task_list_tasks_path(tasklist.id) %></td>
-        <td><%= link_to 'Edit', edit_task_list_path(tasklist) %></td>
-        <td><%= link_to 'Destroy', task_list_path(tasklist.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<br>
+<div class="container">
+   <% @task_lists.each do |tasklist| %>
+   <div class="card bg-faded card-width">
+      <div class="tasklist-title padding-left">
+         <%= tasklist.name %>
+      </div>
+      <div class="tasklist-body padding-left">
+         <%= link_to 'Show', task_list_tasks_path(tasklist.id), class: "btn btn-xs btn-info" %>
+         <%= link_to 'Edit', edit_task_list_path(tasklist), class: "btn btn-xs btn-success" %>
+         <%= link_to 'Destroy', task_list_path(tasklist.id), class: "btn btn-xs btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+   </div>
+   <br>
+   <% end %>
+   <%=link_to 'Create new tasklist', new_task_list_path, class: "btn btn-xs btn-secondary" %>
+</div>
 
 <br>
-
-<%=link_to 'Create new tasklist', new_task_list_path %>

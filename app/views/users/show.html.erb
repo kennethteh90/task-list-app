@@ -1,0 +1,17 @@
+Welcome <%= @user.name.capitalize if logged_in? %>
+
+<% if logged_in? %>
+  <p>
+    <%="Access your task lists here!" %>
+  </p>
+  <p>
+    <%= link_to 'Task Lists', task_lists_path %>
+  </p>
+  <p>
+    <%= link_to 'Logout', logout_path, method: :delete %>
+  </p>
+
+
+<% else %>
+  <%=link_to 'Please Login!', root_path %>
+<% end %>
