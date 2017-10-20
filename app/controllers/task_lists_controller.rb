@@ -7,7 +7,7 @@ class TaskListsController < ApplicationController
     @task_lists = if params[:term]
       @user.task_lists.where('name LIKE ?', "%#{params[:term]}%")
     else
-      @user.task_lists.all
+      @user.task_lists.all.order(name: :asc)
     end
   end
 

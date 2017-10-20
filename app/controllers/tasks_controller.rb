@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
 
   before_action :prepare_tasklist
-  before_action :prepare_task, only: [:edit, :completed, :show]
+  before_action :prepare_task, only: [:edit, :completed, :show, :update]
 
   def index
     @tasks = if params[:term]
       @task_list.tasks.where('description LIKE ?', "%#{params[:term]}%")
     else
-      @task_list.tasks.all
+      @task_list.tasks.all.order(due_date: :asc).sort_by { |task| task.completed ? 1 : 0 }
     end
   end
 
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   def edit; end
 
   def update
-    if @task = @task_list.tasks.update(task_params)
+    if @task.update(task_params)
       redirect_to task_list_tasks_path
     else
       render :edit
