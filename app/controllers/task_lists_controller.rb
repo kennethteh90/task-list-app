@@ -5,7 +5,7 @@ class TaskListsController < ApplicationController
   def index
     # byebug
     @task_lists = if params[:term]
-      @user.task_lists.where('name LIKE ?', "%#{params[:term]}%")
+      @user.task_lists.where('name LIKE ?', "%#{params[:term]}%").order(name: :asc)
     else
       @user.task_lists.all.order(name: :asc)
     end

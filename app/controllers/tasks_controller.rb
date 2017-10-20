@@ -5,7 +5,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = if params[:term]
-      @task_list.tasks.where('description LIKE ?', "%#{params[:term]}%")
+      @task_list.tasks.where('description LIKE ?', "%#{params[:term]}%").order(due_date: :asc).sort_by { |task| task.completed ? 1 : 0 }
     else
       @task_list.tasks.all.order(due_date: :asc).sort_by { |task| task.completed ? 1 : 0 }
     end
