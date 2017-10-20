@@ -1,9 +1,13 @@
 class TaskListsController < ApplicationController
-	def index
+
+  before_action :user_identity
+
+  def index
+    # byebug
     @task_lists = if params[:term]
-      TaskList.where('name LIKE ?', "%#{params[:term]}%")
+      @user.task_lists.where('name LIKE ?', "%#{params[:term]}%")
     else
-      TaskList.all
+      @user.task_lists.all
     end
   end
 
@@ -20,7 +24,7 @@ class TaskListsController < ApplicationController
 	end
 
 	def create
-		@task_list = TaskList.new(task_list_params)
+		@task_list = @user.task_lists.new(task_list_params)
 		@task_list.save
 		redirect_to task_lists_path
 	end
@@ -41,4 +45,13 @@ class TaskListsController < ApplicationController
 	def task_list_params
 		params.require(:task_list).permit(:name, :term)
 	end
+
+  def user_identity
+    if logged_in?
+      @user = User.find(current_user.id)
+    else
+      @user = nil
+    end
+  end
+
 end
