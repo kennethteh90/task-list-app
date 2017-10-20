@@ -1,14 +1,15 @@
+<br><br>
 
-<h1><%= @user.name %> |  Task Lists</h1>
-
-<h3>Filter</h3>
-<%= form_tag(task_lists_path, method: :get) do %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search' %>
-  <%= link_to 'Show all', task_lists_path%>
-<% end %>
 <br>
 <div class="container">
+  <h3>Filter</h3>
+<%= form_tag(task_lists_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', class: "btn btn-xs btn-info" %>
+  <%= link_to 'Show all', task_lists_path, class: "btn btn-xs btn-info"%>
+<% end %>
+<br>
+   <h1><%= @user.name %>'s Task Lists</h1>
    <% @task_lists.each do |tasklist| %>
    <div class="card bg-faded card-width">
       <div class="tasklist-title padding-left">
@@ -22,11 +23,9 @@
    </div>
    <br>
    <% end %>
-   <%=link_to 'Create new tasklist', new_task_list_path, class: "btn btn-xs btn-secondary" %>
+   <%=link_to 'Create new tasklist', new_task_list_path, class: "btn btn-xs btn-secondary" %><br><br>
+   <% if logged_in? %>
+    <%= link_to 'Logout', logout_path, method: :delete, class: "btn btn-xs btn-danger" %>
 </div>
 
-<%=link_to 'Create new tasklist', new_task_list_path %>
-
-<% if logged_in? %>
-    <%= link_to 'Logout', logout_path, method: :delete %>
 <% end %>
