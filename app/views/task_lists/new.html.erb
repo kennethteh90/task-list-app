@@ -1,8 +1,23 @@
-<h1>Create a new tasklist</h1>
+<br><br>
+<div class="container">
+   <%= simple_form_for @task_list, html: { class: 'container card bg-faded card-width' } do |f| %>
+   <div class="card-block">
+      <h1 align="center">Create a new tasklist</h1>
+      <br>
+      <div class="d-flex flex-column justify-content-center">
+         <div>
+            <%= f.input :name %>
+         </div>
+         <div>	
+            <%= f.button :submit %>
+         </div>
+         <br>
+         <div>
+            <%=link_to 'Back', task_lists_path, class: "btn btn-xs btn-secondary" %>
+         </div>
+      </div>
+   </div>
+   <% end %>
+</div>
 
-<%= simple_form_for @task_list do |f| %>
-  <%= f.input :name %>
-  <%= f.button :submit %>
-<% end %>
 
-<%=link_to 'Back', task_lists_path %>

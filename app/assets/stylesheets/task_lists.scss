@@ -1,3 +1,22 @@
 // Place all the styles related to the TaskLists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-width {
+	width: auto;
+}
+
+.tasklist-title {
+	font-weight: bold;
+    font-size: 1.5em;
+}
+
+.tasklist-body {
+    border-top: 1px solid #eaeaea;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.padding-left {
+	padding-left: 10px;
+}
