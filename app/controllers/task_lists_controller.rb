@@ -25,8 +25,11 @@ class TaskListsController < ApplicationController
 
 	def create
 		@task_list = @user.task_lists.new(task_list_params)
-		@task_list.save
+		if @task_list.save
 		redirect_to task_lists_path
+		else
+			render :new
+		end
 	end
 
 	def update

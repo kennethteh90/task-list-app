@@ -1,9 +1,23 @@
-Please Login or Sign up!
+<br><br>
 
-<%= simple_form_for :sessions, url: login_path do |f| %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.button :submit, 'Log in' %>
-<% end %>
-
-<%= link_to 'Sign Up Here!', new_user_path %>
+<div class="container w-75">
+	<%= simple_form_for :sessions, url: login_path, html: { class: 'container card bg-faded' } do |f| %>
+	<div class="card-block">
+		<h1 align="center">Please Login or Sign Up</h1>
+		<br>
+		<div class="d-flex flex-column justify-content-center">
+			<div>
+				<%= f.input :email %>
+			</div>
+			<div>
+				<%= f.input :password %>
+			</div>
+			<div>
+				<%= f.button :submit, 'Log in' %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<br>
+	<%= link_to 'Sign Up Here!', new_user_path, class: "btn btn-xs btn-secondary" %>
+</div>

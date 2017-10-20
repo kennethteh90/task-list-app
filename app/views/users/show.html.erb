@@ -1,17 +1,21 @@
 Welcome <%= @current_user.name.capitalize if logged_in? %>
 
-<% if logged_in? %>
-  <p>
-    <%="Access your task lists here!" %>
-  </p>
-  <p>
-    <%= link_to 'Task Lists', task_lists_path %>
-  </p>
-  <p>
+<div class="container w-75 card bg-faded">
+
+  <div class="card-block">
+    <h1 align="center">Access your task lists here!</h1>
+    <br>
+    <div class="d-flex flex-column justify-content-center">
+      <% if logged_in? %>
+      <div>
+        <%= link_to 'Task Lists', task_lists_path, class: "btn btn-xs btn-info" %>
+      </div>
+    </div>
+    <br>
     <%= link_to 'Logout', logout_path, method: :delete %>
-  </p>
-
-
-<% else %>
-  <%=link_to 'Please Login!', root_path %>
+    <% else %>
+    <%=link_to 'Please Login!', root_path %>
 <% end %>
+  </div>
+
+</div>
