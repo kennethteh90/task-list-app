@@ -1,24 +1,37 @@
-# README
+# Task List App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This task list app enables a user to 1) sign up for an account, 2) login, and 3) create task lists that contain tasks.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+* Ruby 2.4.1
+* Rails 5.1.4
 
-* Database creation
+### Installing
 
-* Database initialization
+Clone the repository
+```
+git clone https://github.com/kennethteh90/task-list-app.git
+```
 
-* How to run the test suite
+Install required gems
+```
+bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Create and configure the database
+```
+rake db:create db:migrate
+```
 
-* Deployment instructions
+## Authors
 
-* ...
+* **Kenneth Teh** - [Kenneth](https://github.com/kennethteh90)
+* **Daniel Goh** - [Daniel](https://github.com/dangoh89)
+
+## Acknowledgments
+* **Rails Tutorial** - https://www.railstutorial.org/book/ for the authentication guide
