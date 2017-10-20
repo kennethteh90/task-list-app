@@ -1,13 +1,15 @@
 <h1 align="center">My Current Tasks in <%= @task_list.name %></h1>
 <br>
-<h3>Filter</h3>
+
+<div class="container">
+   <h3>Filter</h3>
 <%= form_tag(task_list_tasks_path, method: :get) do %>
   <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search' %>
-  <%= link_to 'Show all', task_list_tasks_path%>
+  <%= submit_tag 'Search', class: "btn btn-xs btn-info" %>
+  <%= link_to 'Show all', task_list_tasks_path, class: "btn btn-xs btn-info"%>
 <% end %>
 <br>
-<div class="container">
+
    <h1>Current Task</h1>
    <% @tasks.each do |task| %>
    <div class="card bg-faded card-width">
@@ -24,7 +26,6 @@
    <br>
    <% end %>
    <%=link_to 'Create new task', new_task_list_task_path(@task_list), class: "btn btn-xs btn-secondary" %>
-   <%=link_to 'Back to Tasklist', root_path, class: "btn btn-xs btn-secondary" %>
    <%=link_to 'Back to Home', task_lists_path, class: "btn btn-xs btn-primary" %>
 </div>
 

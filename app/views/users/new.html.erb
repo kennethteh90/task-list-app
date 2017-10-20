@@ -1,10 +1,30 @@
-<h1>Sign Up</h1>
+<br><br>
 
-<%= simple_form_for @user do |f| %>
-  <%= f.input :name %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container w-75">
+	<%= simple_form_for @user, html: { class: 'container card bg-faded card-width' } do |f| %>
+	<div class="card-block">
+		<h1 align="center">Sign Up</h1>
+		<br>
+		<div class="d-flex flex-column justify-content-center">
+			<div>
+				<%= f.input :name %>
+			</div>
+			<div>
+				<%= f.input :email %>
+			</div>
+			<div>
+				<%= f.input :password %>
+			</div>
+			<div>
+				<%= f.button :submit, 'Log in' %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<br>
+	<%=link_to 'Back to Home', users_path, class: "btn btn-xs btn-secondary" %>
+</div>
 
-<%=link_to 'Back to Home', users_path %>
+
+
+
