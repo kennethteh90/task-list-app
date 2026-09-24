@@ -1,3 +1,5 @@
+> **Maintained lightly** for historical Medium/blog links. Active portfolio: [kennethteh90.github.io](https://github.com/kennethteh90/kennethteh90.github.io).
+
 # Task List App
 
 This task list app enables a user to 1) sign up for an account, 2) login, and 3) create task lists that contain tasks.
